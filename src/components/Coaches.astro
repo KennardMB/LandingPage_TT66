@@ -6,7 +6,7 @@ const coaches = (await getCollection('coaches')).sort((a, b) => a.data.order - b
 
 <section class="block" id="coaches">
 	<div class="eyebrow">The team</div>
-	<h2>your coaches</h2>
+	<h2>coaches &amp; staff</h2>
 	<div class="coach-grid">
 		{
 			coaches.map((coach) => (
@@ -28,7 +28,7 @@ const coaches = (await getCollection('coaches')).sort((a, b) => a.data.order - b
 <style>
 	.coach-grid {
 		display: grid;
-		grid-template-columns: repeat(4, 1fr);
+		grid-template-columns: repeat(3, 1fr);
 		gap: 22px;
 	}
 	.coach {

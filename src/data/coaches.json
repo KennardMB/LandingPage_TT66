@@ -8,12 +8,12 @@
 		"initials": "W"
 	},
 	{
-		"id": "sabihisma-arsyi",
+		"id": "pramoedya",
 		"order": 2,
-		"name": "Sabihisma Arsyi",
-		"role": "Synchronized Swimming Coach",
-		"quote": "\"It's about giving the best to what we're passionate about.\"",
-		"initials": "SA"
+		"name": "Pramoedya",
+		"role": "Swimming Coach",
+		"quote": "\"Just keep believing that everything will come true.\"",
+		"initials": "P"
 	},
 	{
 		"id": "harli-ramayani",
@@ -24,8 +24,24 @@
 		"initials": "HR"
 	},
 	{
-		"id": "lukman-niode",
+		"id": "audrey-christina",
 		"order": 4,
+		"name": "Audrey Christina",
+		"role": "Treasurer",
+		"quote": "Former swimmer at Tirta Taruna · Jakarta synchronized swimmer · Bachelor of Economics",
+		"initials": "AC"
+	},
+	{
+		"id": "sabihisma-arsyi",
+		"order": 5,
+		"name": "Sabihisma Arsyi",
+		"role": "Synchronized Swimming Coach",
+		"quote": "\"It's about giving the best to what we're passionate about.\"",
+		"initials": "SA"
+	},
+	{
+		"id": "lukman-niode",
+		"order": 6,
 		"name": "Lukman Niode",
 		"role": "Coach / Consultant",
 		"quote": "Former Olympian · Asian Games medalist · SEA Games champion & record holder",
