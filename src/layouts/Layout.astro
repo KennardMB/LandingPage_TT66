@@ -59,6 +59,11 @@ const { title = 'Tirta Taruna 66 · Aquatic Swimming Club' } = Astro.props;
 	html {
 		-webkit-font-smoothing: antialiased;
 	}
+	@media (prefers-reduced-motion: no-preference) {
+		html {
+			scroll-behavior: smooth;
+		}
+	}
 	body {
 		font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 		color: var(--paper);
