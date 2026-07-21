@@ -1,0 +1,112 @@
+---
+import { getCollection } from 'astro:content';
+
+const programs = (await getCollection('programs')).sort((a, b) => a.data.order - b.data.order);
+---
+
+<section class="block" id="programs">
+	<div class="eyebrow">Weekly programs</div>
+	<h2>train with us</h2>
+	<div class="note">
+		Class times shown as "Schedule TBC" — to be confirmed with the club
+		during onboarding and filled in before launch.
+	</div>
+	<div class="filters">
+		<span class="chip on">All programs</span>
+		{programs.map((program) => <span class="chip">{program.data.name}</span>)}
+	</div>
+	<div class="sched-table">
+		{
+			programs.map((program) => (
+				<div class="sched-row">
+					<span class="code">{program.data.code}</span>
+					<span class="prog-cell">
+						<span class="prog">{program.data.name}</span>
+						<span class="desc">{program.data.description}</span>
+					</span>
+					<span class="lvl">{program.data.level}</span>
+					<span class="time">{program.data.scheduleStatus}</span>
+				</div>
+			))
+		}
+	</div>
+</section>
+
+<style>
+	.sched-table {
+		border-top: 2px solid rgba(255, 255, 255, 0.28);
+	}
+	.sched-row {
+		display: grid;
+		grid-template-columns: 70px 1.4fr 1fr 190px;
+		align-items: center;
+		gap: 20px;
+		padding: 26px 8px;
+		border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+	}
+	.sched-row .code {
+		font-size: 15px;
+		font-weight: 700;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		color: var(--muted);
+	}
+	.sched-row .prog-cell {
+		display: block;
+	}
+	.sched-row .prog-cell .prog {
+		display: block;
+		font-size: 26px;
+		font-weight: 700;
+		letter-spacing: -0.01em;
+	}
+	.sched-row .prog-cell .desc {
+		display: block;
+		font-size: 15px;
+		font-weight: 500;
+		color: var(--paper);
+		opacity: 0.75;
+		margin-top: 4px;
+	}
+	.sched-row .lvl {
+		font-size: 16px;
+		font-weight: 500;
+		color: var(--paper);
+		opacity: 0.85;
+	}
+	.sched-row .time {
+		font-size: 15px;
+		font-weight: 700;
+		text-align: right;
+		letter-spacing: 0.06em;
+		text-transform: uppercase;
+		color: var(--muted);
+	}
+	.filters {
+		display: flex;
+		gap: 12px;
+		margin-bottom: 38px;
+		flex-wrap: wrap;
+	}
+	.chip {
+		padding: 11px 22px;
+		border: 1.5px solid rgba(255, 255, 255, 0.35);
+		border-radius: 30px;
+		font-size: 13px;
+		font-weight: 600;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+	}
+	.chip.on {
+		background: var(--paper);
+		color: var(--ink);
+		border-color: var(--paper);
+	}
+
+	@media (max-width: 900px) {
+		.sched-row {
+			grid-template-columns: 1fr;
+			gap: 6px;
+		}
+	}
+</style>

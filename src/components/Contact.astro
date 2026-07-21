@@ -1,0 +1,116 @@
+---
+---
+
+<section class="block contact" id="contact">
+	<div class="eyebrow">Get in touch</div>
+	<div class="contact-grid">
+		<div>
+			<h2>join us</h2>
+			<div class="contact-info">
+				<div>
+					<div class="k">Location</div>
+					<div class="v">Kolam Renang Senayan, GBK, Jakarta</div>
+				</div>
+				<div>
+					<div class="k">Email</div>
+					<div class="v">info@tirtataruna66.id</div>
+					<div class="flag">Placeholder — replace with the club's real address</div>
+				</div>
+				<div>
+					<div class="k">Phone / WhatsApp</div>
+					<div class="v">+62 8xx xxxx xxxx</div>
+					<div class="flag">Placeholder — replace with the club's real number</div>
+				</div>
+			</div>
+			<a href="#" class="wa-btn">Chat on WhatsApp</a>
+		</div>
+		<div class="map"><div class="pin"></div></div>
+	</div>
+</section>
+
+<style>
+	.contact {
+		background: var(--blue-deeper);
+	}
+	.contact-grid {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 70px;
+	}
+	.contact h2 {
+		font-size: 96px;
+	}
+	.contact-info div {
+		margin-bottom: 26px;
+	}
+	.contact-info .k {
+		font-size: 13px;
+		letter-spacing: 0.16em;
+		text-transform: uppercase;
+		color: var(--muted);
+		font-weight: 700;
+		margin-bottom: 8px;
+	}
+	.contact-info .v {
+		font-size: 24px;
+		font-weight: 600;
+	}
+	.contact-info .flag {
+		font-size: 12px;
+		color: var(--muted);
+		font-weight: 600;
+		margin-top: 4px;
+		text-transform: none;
+		letter-spacing: 0;
+		opacity: 0.8;
+	}
+	.wa-btn {
+		display: inline-flex;
+		align-items: center;
+		gap: 12px;
+		background: var(--paper);
+		color: var(--ink);
+		padding: 20px 40px;
+		border-radius: 40px;
+		font-weight: 700;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		font-size: 15px;
+		text-decoration: none;
+		margin-top: 14px;
+	}
+	.map {
+		height: 100%;
+		min-height: 320px;
+		background: linear-gradient(135deg, var(--blue) 0%, var(--blue-deep) 100%);
+		border-radius: 14px;
+		position: relative;
+		overflow: hidden;
+	}
+	.map::after {
+		content: 'Kolam Renang Senayan · GBK · Jakarta';
+		position: absolute;
+		left: 28px;
+		bottom: 26px;
+		font-size: 16px;
+		font-weight: 600;
+		opacity: 0.85;
+	}
+	.map .pin {
+		position: absolute;
+		left: 50%;
+		top: 44%;
+		transform: translate(-50%, -100%);
+		width: 26px;
+		height: 26px;
+		background: var(--paper);
+		border-radius: 50% 50% 50% 0;
+		rotate: -45deg;
+	}
+
+	@media (max-width: 900px) {
+		.contact-grid {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>

@@ -1,0 +1,6 @@
+[
+	{ "id": "years", "order": 1, "value": "60", "label": "Years since 1966" },
+	{ "id": "disciplines", "order": 2, "value": "5", "label": "Disciplines offered" },
+	{ "id": "coaches", "order": 3, "value": "6", "label": "Certified coaches" },
+	{ "id": "pool", "order": 4, "value": "50m", "label": "Olympic pool, GBK" }
+]

@@ -1,0 +1,5 @@
+[
+	{ "id": "gold", "order": 1, "count": 3, "label": "Gold" },
+	{ "id": "silver", "order": 2, "count": 5, "label": "Silver" },
+	{ "id": "bronze", "order": 3, "count": 6, "label": "Bronze" }
+]

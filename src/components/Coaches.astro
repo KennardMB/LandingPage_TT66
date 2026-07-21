@@ -1,0 +1,92 @@
+---
+import { getCollection } from 'astro:content';
+
+const coaches = (await getCollection('coaches')).sort((a, b) => a.data.order - b.data.order);
+---
+
+<section class="block" id="coaches">
+	<div class="eyebrow">The team</div>
+	<h2>your coaches</h2>
+	<div class="coach-grid">
+		{
+			coaches.map((coach) => (
+				<div class="coach">
+					<div class="photo">
+						<div class="avatar">{coach.data.initials}</div>
+					</div>
+					<div class="c-body">
+						<div class="c-name">{coach.data.name}</div>
+						<div class="c-role">{coach.data.role}</div>
+						<div class="c-quote">{coach.data.quote}</div>
+					</div>
+				</div>
+			))
+		}
+	</div>
+</section>
+
+<style>
+	.coach-grid {
+		display: grid;
+		grid-template-columns: repeat(4, 1fr);
+		gap: 22px;
+	}
+	.coach {
+		background: var(--blue-deep);
+		border-radius: 14px;
+		overflow: hidden;
+	}
+	.coach .photo {
+		height: 220px;
+		background: linear-gradient(160deg, var(--blue) 0%, var(--blue-deeper) 100%);
+		position: relative;
+	}
+	.coach .photo::after {
+		content: '';
+		position: absolute;
+		inset: 0;
+		background: radial-gradient(
+			circle at 50% 38%,
+			rgba(255, 255, 255, 0.14),
+			transparent 60%
+		);
+	}
+	.coach .avatar {
+		position: absolute;
+		left: 50%;
+		top: 44%;
+		transform: translate(-50%, -50%);
+		font-size: 64px;
+		font-weight: 700;
+		color: rgba(255, 255, 255, 0.35);
+	}
+	.coach .c-body {
+		padding: 24px 22px 28px;
+	}
+	.coach .c-name {
+		font-size: 22px;
+		font-weight: 700;
+		letter-spacing: -0.01em;
+	}
+	.coach .c-role {
+		font-size: 13px;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		color: var(--muted);
+		margin-top: 8px;
+		font-weight: 600;
+	}
+	.coach .c-quote {
+		font-size: 14px;
+		font-style: italic;
+		opacity: 0.7;
+		margin-top: 14px;
+		line-height: 1.4;
+	}
+
+	@media (max-width: 900px) {
+		.coach-grid {
+			grid-template-columns: repeat(2, 1fr);
+		}
+	}
+</style>

@@ -1,0 +1,47 @@
+[
+	{
+		"id": "swimming",
+		"order": 1,
+		"code": "SW",
+		"name": "Swimming",
+		"description": "Core stroke and technique training",
+		"level": "All age groups",
+		"scheduleStatus": "Schedule TBC"
+	},
+	{
+		"id": "synchro",
+		"order": 2,
+		"code": "SY",
+		"name": "Synchronized Swimming",
+		"description": "Routine, artistry and endurance work",
+		"level": "All age groups",
+		"scheduleStatus": "Schedule TBC"
+	},
+	{
+		"id": "diving",
+		"order": 3,
+		"code": "DV",
+		"name": "Diving",
+		"description": "Platform and springboard fundamentals",
+		"level": "All age groups",
+		"scheduleStatus": "Schedule TBC"
+	},
+	{
+		"id": "masters",
+		"order": 4,
+		"code": "MA",
+		"name": "Masters",
+		"description": "Fitness and technique for adult swimmers",
+		"level": "Adult · 30+",
+		"scheduleStatus": "Schedule TBC"
+	},
+	{
+		"id": "triathlon",
+		"order": 5,
+		"code": "TR",
+		"name": "Triathlon",
+		"description": "Open-water ready swim training",
+		"level": "All age groups",
+		"scheduleStatus": "Schedule TBC"
+	}
+]

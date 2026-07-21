@@ -1,0 +1,83 @@
+---
+import { getCollection } from 'astro:content';
+
+const stats = (await getCollection('stats')).sort((a, b) => a.data.order - b.data.order);
+---
+
+<section class="block about" id="about">
+	<div class="eyebrow">About the club</div>
+	<div class="about-grid">
+		<div>
+			<h2>who we are</h2>
+			<p>
+				Tirta Taruna 66 was founded on 10 November 1966 to promote and
+				improve competitive swimming. For six decades we've consistently
+				developed National and International athletes.
+			</p>
+			<p>
+				We're a member-run organization — managed by swimmers and swimmers'
+				parents, for swimmers' achievement. That structure is a big part of
+				why TT66 has stayed strong for so long.
+			</p>
+		</div>
+		<div class="stats">
+			{
+				stats.map((stat) => (
+					<div class="stat">
+						<div class="num">{stat.data.value}</div>
+						<div class="lbl">{stat.data.label}</div>
+					</div>
+				))
+			}
+		</div>
+	</div>
+</section>
+
+<style>
+	.about {
+		background: var(--blue-deep);
+	}
+	.about-grid {
+		display: grid;
+		grid-template-columns: 1.1fr 0.9fr;
+		gap: 60px;
+		align-items: end;
+	}
+	.about-grid p {
+		font-size: 21px;
+		line-height: 1.5;
+		font-weight: 500;
+		max-width: 560px;
+	}
+	.about-grid p + p {
+		margin-top: 18px;
+	}
+	.stats {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 40px 30px;
+	}
+	.stat .num {
+		font-size: 72px;
+		font-weight: 700;
+		letter-spacing: -0.03em;
+		line-height: 1;
+	}
+	.stat .lbl {
+		font-size: 14px;
+		letter-spacing: 0.06em;
+		color: var(--muted);
+		margin-top: 10px;
+		text-transform: uppercase;
+		font-weight: 600;
+	}
+
+	@media (max-width: 900px) {
+		.about-grid {
+			grid-template-columns: 1fr;
+		}
+		.stats {
+			grid-template-columns: repeat(2, 1fr);
+		}
+	}
+</style>

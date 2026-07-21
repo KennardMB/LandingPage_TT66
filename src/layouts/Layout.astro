@@ -1,0 +1,200 @@
+---
+interface Props {
+	title?: string;
+}
+const { title = 'Tirta Taruna 66 · Aquatic Swimming Club' } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>{title}</title>
+</head>
+<body>
+	<div class="wrap">
+		<div class="guides"><span></span><span></span></div>
+
+		<nav>
+			<div class="brand">Tirta Taruna 66</div>
+			<div class="navlinks">
+				<a href="#about">About</a>
+				<a href="#programs">Programs</a>
+				<a href="#achievements">Achievements</a>
+				<a href="#coaches">Coaches</a>
+				<a href="#contact">Contact</a>
+			</div>
+			<div class="menu-btn">Menu</div>
+		</nav>
+
+		<slot />
+
+		<footer>
+			<div class="fbrand">tirta taruna 66</div>
+			<div class="fnote">Senayan · Jakarta · Est. 1966</div>
+		</footer>
+	</div>
+</body>
+</html>
+
+<style is:global>
+	:root {
+		--blue: #5166dc;
+		--blue-deep: #4253b4;
+		--blue-deeper: #3a49a0;
+		--paper: #ebeae8;
+		--muted: #9fa9e1;
+		--ink: #20264a;
+	}
+	* {
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+	}
+	html {
+		-webkit-font-smoothing: antialiased;
+	}
+	body {
+		font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+		color: var(--paper);
+		background: var(--blue);
+		line-height: 1.15;
+	}
+	.wrap {
+		max-width: 1440px;
+		margin: 0 auto;
+		position: relative;
+	}
+
+	.guides {
+		position: absolute;
+		inset: 0;
+		pointer-events: none;
+		z-index: 2;
+	}
+	.guides span {
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		width: 1px;
+		background: rgba(255, 255, 255, 0.16);
+	}
+	.guides span:nth-child(1) {
+		left: 20%;
+	}
+	.guides span:nth-child(2) {
+		left: 80%;
+	}
+
+	/* ---------- NAV ---------- */
+	nav {
+		position: relative;
+		z-index: 5;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		padding: 34px 56px;
+	}
+	.brand {
+		font-weight: 700;
+		letter-spacing: 0.14em;
+		font-size: 15px;
+		text-transform: uppercase;
+	}
+	.navlinks {
+		display: flex;
+		gap: 38px;
+		font-size: 14px;
+		letter-spacing: 0.14em;
+		text-transform: uppercase;
+		font-weight: 500;
+	}
+	.navlinks a {
+		color: var(--paper);
+		text-decoration: none;
+		opacity: 0.85;
+	}
+	.navlinks a:hover {
+		opacity: 1;
+	}
+	.menu-btn {
+		font-weight: 700;
+		letter-spacing: 0.14em;
+		font-size: 15px;
+		text-transform: uppercase;
+	}
+
+	/* ---------- SECTION SHELL (shared across section components) ---------- */
+	section.block {
+		padding: 96px 56px;
+		position: relative;
+		z-index: 3;
+	}
+	.eyebrow {
+		font-size: 13px;
+		letter-spacing: 0.24em;
+		text-transform: uppercase;
+		font-weight: 700;
+		color: var(--muted);
+		margin-bottom: 20px;
+		display: flex;
+		align-items: center;
+		gap: 14px;
+	}
+	.eyebrow::before {
+		content: '';
+		width: 34px;
+		height: 2px;
+		background: var(--muted);
+		display: inline-block;
+	}
+	.block h2 {
+		font-weight: 700;
+		font-size: 84px;
+		line-height: 0.9;
+		letter-spacing: -0.03em;
+		text-transform: lowercase;
+		margin-bottom: 34px;
+	}
+	.note {
+		font-size: 14px;
+		color: var(--muted);
+		font-weight: 600;
+		margin-top: -16px;
+		margin-bottom: 40px;
+		max-width: 640px;
+	}
+
+	/* ---------- FOOTER ---------- */
+	footer {
+		padding: 56px;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		border-top: 1px solid rgba(255, 255, 255, 0.2);
+		position: relative;
+		z-index: 3;
+		flex-wrap: wrap;
+		gap: 16px;
+	}
+	footer .fbrand {
+		font-size: 40px;
+		font-weight: 700;
+		letter-spacing: -0.03em;
+		text-transform: lowercase;
+	}
+	footer .fnote {
+		font-size: 13px;
+		letter-spacing: 0.08em;
+		color: var(--muted);
+		text-transform: uppercase;
+		font-weight: 600;
+	}
+
+	@media (max-width: 900px) {
+		.block h2 {
+			font-size: 52px;
+		}
+	}
+</style>

@@ -1,0 +1,26 @@
+[
+	{
+		"id": "master-competition",
+		"order": 1,
+		"event": "Master Competition",
+		"result": "2 Gold, 3 Silver, 3 Bronze",
+		"names": "Harni Wiramasari, Tabbie Sumendap — Gold · relay teams — Silver & Bronze",
+		"dateStatus": "DATE TBC"
+	},
+	{
+		"id": "seaf-games-singapore",
+		"order": 2,
+		"event": "SEAF Games — Singapore",
+		"result": "Synchro: 2 Bronze · Diving: 1 Gold",
+		"names": "Tri Eka Sandiri, Samara Thalia, Sabihisma Arsyi — Bronze · Adriyan, Aditiawan — Gold",
+		"dateStatus": "DATE TBC"
+	},
+	{
+		"id": "hong-kong-open-age-group",
+		"order": 3,
+		"event": "Hong Kong Open Age Group",
+		"result": "2 Silver, 1 Bronze",
+		"names": "Tri Eka Sandiri, Rara Naura, Gabriella — Silver · Sabihisma Arsyi, Naima Syeeda — Bronze",
+		"dateStatus": "DATE TBC"
+	}
+]

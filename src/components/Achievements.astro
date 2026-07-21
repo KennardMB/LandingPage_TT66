@@ -1,0 +1,128 @@
+---
+import { getCollection } from 'astro:content';
+
+const medals = (await getCollection('medals')).sort((a, b) => a.data.order - b.data.order);
+const results = (await getCollection('results')).sort((a, b) => a.data.order - b.data.order);
+---
+
+<section class="block ach" id="achievements">
+	<div class="eyebrow">Achievements</div>
+	<h2>on the podium</h2>
+	<div class="medal-tally">
+		{
+			medals.map((medal) => (
+				<div class="medal">
+					<div class="m-num">{medal.data.count}</div>
+					<div class="m-lbl">{medal.data.label}</div>
+				</div>
+			))
+		}
+	</div>
+	<div class="timeline">
+		{
+			results.map((result) => (
+				<div class="tl-item">
+					<div class="yr">{result.data.dateStatus}</div>
+					<div class="ev">{result.data.event}</div>
+					<div class="dt">{result.data.result}</div>
+					<div class="names">{result.data.names}</div>
+				</div>
+			))
+		}
+	</div>
+</section>
+
+<style>
+	.ach {
+		background: var(--blue-deep);
+	}
+	.medal-tally {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 0;
+		border: 2px solid rgba(255, 255, 255, 0.25);
+		margin-bottom: 60px;
+	}
+	.medal {
+		padding: 42px 34px;
+		border-right: 1px solid rgba(255, 255, 255, 0.2);
+	}
+	.medal:last-child {
+		border-right: none;
+	}
+	.medal .m-num {
+		font-size: 96px;
+		font-weight: 700;
+		line-height: 0.85;
+		letter-spacing: -0.04em;
+	}
+	.medal .m-lbl {
+		font-size: 15px;
+		letter-spacing: 0.14em;
+		text-transform: uppercase;
+		font-weight: 600;
+		color: var(--muted);
+		margin-top: 14px;
+	}
+	.timeline {
+		position: relative;
+		padding-left: 34px;
+	}
+	.timeline::before {
+		content: '';
+		position: absolute;
+		left: 0;
+		top: 8px;
+		bottom: 8px;
+		width: 2px;
+		background: rgba(255, 255, 255, 0.3);
+	}
+	.tl-item {
+		position: relative;
+		padding: 0 0 40px 34px;
+	}
+	.tl-item::before {
+		content: '';
+		position: absolute;
+		left: -6px;
+		top: 6px;
+		width: 14px;
+		height: 14px;
+		border-radius: 50%;
+		background: var(--paper);
+	}
+	.tl-item .yr {
+		font-size: 15px;
+		font-weight: 700;
+		letter-spacing: 0.1em;
+		color: var(--muted);
+	}
+	.tl-item .ev {
+		font-size: 26px;
+		font-weight: 700;
+		margin-top: 8px;
+		letter-spacing: -0.01em;
+	}
+	.tl-item .dt {
+		font-size: 17px;
+		opacity: 0.8;
+		margin-top: 6px;
+		font-weight: 500;
+	}
+	.tl-item .names {
+		font-size: 15px;
+		opacity: 0.65;
+		margin-top: 6px;
+		font-weight: 500;
+	}
+
+	@media (max-width: 900px) {
+		.medal-tally {
+			grid-template-columns: 1fr;
+		}
+		.medal {
+			border-right: none;
+			border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+		}
+	}
+</style>

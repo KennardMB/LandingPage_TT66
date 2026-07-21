@@ -1,0 +1,34 @@
+[
+	{
+		"id": "widarman",
+		"order": 1,
+		"name": "Widarman",
+		"role": "Swimming Coach",
+		"quote": "\"Keep learning and always try to give the best.\"",
+		"initials": "W"
+	},
+	{
+		"id": "sabihisma-arsyi",
+		"order": 2,
+		"name": "Sabihisma Arsyi",
+		"role": "Synchronized Swimming Coach",
+		"quote": "\"It's about giving the best to what we're passionate about.\"",
+		"initials": "SA"
+	},
+	{
+		"id": "harli-ramayani",
+		"order": 3,
+		"name": "Harli Ramayani",
+		"role": "Diving Coach",
+		"quote": "\"Winning is really about the detail.\"",
+		"initials": "HR"
+	},
+	{
+		"id": "lukman-niode",
+		"order": 4,
+		"name": "Lukman Niode",
+		"role": "Coach / Consultant",
+		"quote": "Former Olympian · Asian Games medalist · SEA Games champion & record holder",
+		"initials": "LN"
+	}
+]

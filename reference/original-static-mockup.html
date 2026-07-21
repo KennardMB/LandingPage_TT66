@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tirta Taruna 66 · Aquatic Swimming Club</title>
+<style>
+  :root{
+    --blue:#5166DC;
+    --blue-deep:#4253B4;
+    --blue-deeper:#3A49A0;
+    --paper:#EBEAE8;
+    --muted:#9FA9E1;
+    --ink:#20264A;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{-webkit-font-smoothing:antialiased;}
+  body{
+    font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;
+    color:var(--paper);
+    background:var(--blue);
+    line-height:1.15;
+  }
+  .wrap{max-width:1440px;margin:0 auto;position:relative;}
+
+  .guides{position:absolute;inset:0;pointer-events:none;z-index:2;}
+  .guides span{position:absolute;top:0;bottom:0;width:1px;background:rgba(255,255,255,.16);}
+  .guides span:nth-child(1){left:20%;}
+  .guides span:nth-child(2){left:80%;}
+
+  /* ---------- NAV ---------- */
+  nav{
+    position:relative;z-index:5;
+    display:flex;justify-content:space-between;align-items:center;
+    padding:34px 56px;
+  }
+  .brand{font-weight:700;letter-spacing:.14em;font-size:15px;text-transform:uppercase;}
+  .navlinks{display:flex;gap:38px;font-size:14px;letter-spacing:.14em;text-transform:uppercase;font-weight:500;}
+  .navlinks a{color:var(--paper);text-decoration:none;opacity:.85;}
+  .navlinks a:hover{opacity:1;}
+  .menu-btn{font-weight:700;letter-spacing:.14em;font-size:15px;text-transform:uppercase;}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;z-index:3;
+    padding:40px 56px 90px;
+    min-height:640px;
+  }
+  .hero-ghost{
+    position:absolute;right:2%;top:-4%;z-index:-1;
+    font-weight:700;font-size:520px;line-height:.8;
+    color:rgba(255,255,255,.06);letter-spacing:-.04em;
+    user-select:none;
+  }
+  .hero h1{
+    font-weight:700;
+    font-size:210px;
+    line-height:.86;
+    letter-spacing:-.04em;
+    text-transform:lowercase;
+    color:var(--paper);
+  }
+  .hero-sub{
+    display:flex;align-items:flex-end;gap:60px;margin-top:38px;flex-wrap:wrap;
+  }
+  .hero-sub p{
+    max-width:440px;font-size:22px;line-height:1.4;font-weight:500;
+    color:var(--paper);
+  }
+  .hero-cta{
+    display:inline-block;margin-top:6px;
+    background:var(--paper);color:var(--ink);
+    padding:18px 40px;border-radius:40px;
+    font-weight:700;letter-spacing:.1em;text-transform:uppercase;font-size:14px;
+    text-decoration:none;white-space:nowrap;
+  }
+
+  /* ---------- SECTION SHELL ---------- */
+  section.block{padding:96px 56px;position:relative;z-index:3;}
+  .eyebrow{
+    font-size:13px;letter-spacing:.24em;text-transform:uppercase;
+    font-weight:700;color:var(--muted);margin-bottom:20px;
+    display:flex;align-items:center;gap:14px;
+  }
+  .eyebrow::before{content:"";width:34px;height:2px;background:var(--muted);display:inline-block;}
+  .block h2{
+    font-weight:700;font-size:84px;line-height:.9;letter-spacing:-.03em;
+    text-transform:lowercase;margin-bottom:34px;
+  }
+  .note{font-size:14px;color:var(--muted);font-weight:600;margin-top:-16px;margin-bottom:40px;max-width:640px;}
+
+  /* ABOUT */
+  .about{background:var(--blue-deep);}
+  .about-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:60px;align-items:end;}
+  .about-grid p{font-size:21px;line-height:1.5;font-weight:500;max-width:560px;}
+  .about-grid p+p{margin-top:18px;}
+  .stats{display:grid;grid-template-columns:repeat(2,1fr);gap:40px 30px;}
+  .stat .num{font-size:72px;font-weight:700;letter-spacing:-.03em;line-height:1;}
+  .stat .lbl{font-size:14px;letter-spacing:.06em;color:var(--muted);margin-top:10px;text-transform:uppercase;font-weight:600;}
+
+  /* PROGRAMS */
+  .sched-table{border-top:2px solid rgba(255,255,255,.28);}
+  .sched-row{
+    display:grid;grid-template-columns:70px 1.4fr 1fr 190px;
+    align-items:center;gap:20px;
+    padding:26px 8px;border-bottom:1px solid rgba(255,255,255,.18);
+  }
+  .sched-row .code{font-size:15px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);}
+  .sched-row .prog-cell{display:block;}
+  .sched-row .prog-cell .prog{display:block;font-size:26px;font-weight:700;letter-spacing:-.01em;}
+  .sched-row .prog-cell .desc{display:block;font-size:15px;font-weight:500;color:var(--paper);opacity:.75;margin-top:4px;}
+  .sched-row .lvl{font-size:16px;font-weight:500;color:var(--paper);opacity:.85;}
+  .sched-row .time{font-size:15px;font-weight:700;text-align:right;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);}
+  .filters{display:flex;gap:12px;margin-bottom:38px;flex-wrap:wrap;}
+  .chip{
+    padding:11px 22px;border:1.5px solid rgba(255,255,255,.35);border-radius:30px;
+    font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;
+  }
+  .chip.on{background:var(--paper);color:var(--ink);border-color:var(--paper);}
+
+  /* ACHIEVEMENTS */
+  .ach{background:var(--blue-deep);}
+  .medal-tally{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:2px solid rgba(255,255,255,.25);margin-bottom:60px;}
+  .medal{padding:42px 34px;border-right:1px solid rgba(255,255,255,.2);}
+  .medal:last-child{border-right:none;}
+  .medal .m-num{font-size:96px;font-weight:700;line-height:.85;letter-spacing:-.04em;}
+  .medal .m-lbl{font-size:15px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:var(--muted);margin-top:14px;}
+  .timeline{position:relative;padding-left:34px;}
+  .timeline::before{content:"";position:absolute;left:0;top:8px;bottom:8px;width:2px;background:rgba(255,255,255,.3);}
+  .tl-item{position:relative;padding:0 0 40px 34px;}
+  .tl-item::before{content:"";position:absolute;left:-6px;top:6px;width:14px;height:14px;border-radius:50%;background:var(--paper);}
+  .tl-item .yr{font-size:15px;font-weight:700;letter-spacing:.1em;color:var(--muted);}
+  .tl-item .ev{font-size:26px;font-weight:700;margin-top:8px;letter-spacing:-.01em;}
+  .tl-item .dt{font-size:17px;opacity:.8;margin-top:6px;font-weight:500;}
+  .tl-item .names{font-size:15px;opacity:.65;margin-top:6px;font-weight:500;}
+
+  /* COACHES */
+  .coach-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;}
+  .coach{background:var(--blue-deep);border-radius:14px;overflow:hidden;}
+  .coach .photo{height:220px;background:linear-gradient(160deg,var(--blue) 0%,var(--blue-deeper) 100%);position:relative;}
+  .coach .photo::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 38%,rgba(255,255,255,.14),transparent 60%);}
+  .coach .avatar{position:absolute;left:50%;top:44%;transform:translate(-50%,-50%);font-size:64px;font-weight:700;color:rgba(255,255,255,.35);}
+  .coach .c-body{padding:24px 22px 28px;}
+  .coach .c-name{font-size:22px;font-weight:700;letter-spacing:-.01em;}
+  .coach .c-role{font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-top:8px;font-weight:600;}
+  .coach .c-quote{font-size:14px;font-style:italic;opacity:.7;margin-top:14px;line-height:1.4;}
+
+  /* CONTACT */
+  .contact{background:var(--blue-deeper);}
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:70px;}
+  .contact h2{font-size:96px;}
+  .contact-info div{margin-bottom:26px;}
+  .contact-info .k{font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);font-weight:700;margin-bottom:8px;}
+  .contact-info .v{font-size:24px;font-weight:600;}
+  .contact-info .flag{font-size:12px;color:var(--muted);font-weight:600;margin-top:4px;text-transform:none;letter-spacing:0;opacity:.8;}
+  .wa-btn{display:inline-flex;align-items:center;gap:12px;background:var(--paper);color:var(--ink);padding:20px 40px;border-radius:40px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;font-size:15px;text-decoration:none;margin-top:14px;}
+  .map{height:100%;min-height:320px;background:linear-gradient(135deg,var(--blue) 0%,var(--blue-deep) 100%);border-radius:14px;position:relative;overflow:hidden;}
+  .map::after{content:"Kolam Renang Senayan · GBK · Jakarta";position:absolute;left:28px;bottom:26px;font-size:16px;font-weight:600;opacity:.85;}
+  .map .pin{position:absolute;left:50%;top:44%;transform:translate(-50%,-100%);width:26px;height:26px;background:var(--paper);border-radius:50% 50% 50% 0;rotate:-45deg;}
+
+  /* FOOTER */
+  footer{padding:56px;display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(255,255,255,.2);position:relative;z-index:3;flex-wrap:wrap;gap:16px;}
+  footer .fbrand{font-size:40px;font-weight:700;letter-spacing:-.03em;text-transform:lowercase;}
+  footer .fnote{font-size:13px;letter-spacing:.08em;color:var(--muted);text-transform:uppercase;font-weight:600;}
+
+  @media (max-width:900px){
+    .hero h1{font-size:110px;}
+    .hero-ghost{font-size:220px;}
+    .block h2{font-size:52px;}
+    .about-grid,.contact-grid{grid-template-columns:1fr;}
+    .stats{grid-template-columns:repeat(2,1fr);}
+    .sched-row{grid-template-columns:1fr;gap:6px;}
+    .coach-grid{grid-template-columns:repeat(2,1fr);}
+    .medal-tally{grid-template-columns:1fr;}
+    .medal{border-right:none;border-bottom:1px solid rgba(255,255,255,.2);}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="guides"><span></span><span></span></div>
+
+  <!-- NAV -->
+  <nav>
+    <div class="brand">Tirta Taruna 66</div>
+    <div class="navlinks">
+      <a href="#about">About</a>
+      <a href="#programs">Programs</a>
+      <a href="#achievements">Achievements</a>
+      <a href="#coaches">Coaches</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div class="menu-btn">Menu</div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="hero-ghost">66</div>
+    <h1>tirta<br>taruna</h1>
+    <div class="hero-sub">
+      <p>Based at Kolam Renang Senayan, GBK Jakarta — we are here to make you stronger, and we are here to make you better. Since 1966.</p>
+      <a href="#contact" class="hero-cta">Join us</a>
+    </div>
+  </header>
+
+  <!-- ABOUT -->
+  <section class="block about" id="about">
+    <div class="eyebrow">About the club</div>
+    <div class="about-grid">
+      <div>
+        <h2>who we are</h2>
+        <p>Tirta Taruna 66 was founded on 10 November 1966 to promote and improve competitive swimming. For six decades we've consistently developed National and International athletes.</p>
+        <p>We're a member-run organization — managed by swimmers and swimmers' parents, for swimmers' achievement. That structure is a big part of why TT66 has stayed strong for so long.</p>
+      </div>
+      <div class="stats">
+        <div class="stat"><div class="num">60</div><div class="lbl">Years since 1966</div></div>
+        <div class="stat"><div class="num">5</div><div class="lbl">Disciplines offered</div></div>
+        <div class="stat"><div class="num">6</div><div class="lbl">Certified coaches</div></div>
+        <div class="stat"><div class="num">50m</div><div class="lbl">Olympic pool, GBK</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROGRAMS -->
+  <section class="block" id="programs">
+    <div class="eyebrow">Weekly programs</div>
+    <h2>train with us</h2>
+    <div class="note">Class times shown as "Schedule TBC" — to be confirmed with the club during onboarding and filled in before launch.</div>
+    <div class="filters">
+      <span class="chip on">All programs</span>
+      <span class="chip">Swimming</span>
+      <span class="chip">Synchro</span>
+      <span class="chip">Diving</span>
+      <span class="chip">Masters</span>
+      <span class="chip">Triathlon</span>
+    </div>
+    <div class="sched-table">
+      <div class="sched-row"><span class="code">SW</span><span class="prog-cell"><span class="prog">Swimming</span><span class="desc">Core stroke and technique training</span></span><span class="lvl">All age groups</span><span class="time">Schedule TBC</span></div>
+      <div class="sched-row"><span class="code">SY</span><span class="prog-cell"><span class="prog">Synchronized Swimming</span><span class="desc">Routine, artistry and endurance work</span></span><span class="lvl">All age groups</span><span class="time">Schedule TBC</span></div>
+      <div class="sched-row"><span class="code">DV</span><span class="prog-cell"><span class="prog">Diving</span><span class="desc">Platform and springboard fundamentals</span></span><span class="lvl">All age groups</span><span class="time">Schedule TBC</span></div>
+      <div class="sched-row"><span class="code">MA</span><span class="prog-cell"><span class="prog">Masters</span><span class="desc">Fitness and technique for adult swimmers</span></span><span class="lvl">Adult · 30+</span><span class="time">Schedule TBC</span></div>
+      <div class="sched-row"><span class="code">TR</span><span class="prog-cell"><span class="prog">Triathlon</span><span class="desc">Open-water ready swim training</span></span><span class="lvl">All age groups</span><span class="time">Schedule TBC</span></div>
+    </div>
+  </section>
+
+  <!-- ACHIEVEMENTS -->
+  <section class="block ach" id="achievements">
+    <div class="eyebrow">Achievements</div>
+    <h2>on the podium</h2>
+    <div class="medal-tally">
+      <div class="medal"><div class="m-num">3</div><div class="m-lbl">Gold</div></div>
+      <div class="medal"><div class="m-num">5</div><div class="m-lbl">Silver</div></div>
+      <div class="medal"><div class="m-num">6</div><div class="m-lbl">Bronze</div></div>
+    </div>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="yr">DATE TBC</div>
+        <div class="ev">Master Competition</div>
+        <div class="dt">2 Gold, 3 Silver, 3 Bronze</div>
+        <div class="names">Harni Wiramasari, Tabbie Sumendap — Gold · relay teams — Silver &amp; Bronze</div>
+      </div>
+      <div class="tl-item">
+        <div class="yr">DATE TBC</div>
+        <div class="ev">SEAF Games — Singapore</div>
+        <div class="dt">Synchro: 2 Bronze · Diving: 1 Gold</div>
+        <div class="names">Tri Eka Sandiri, Samara Thalia, Sabihisma Arsyi — Bronze · Adriyan, Aditiawan — Gold</div>
+      </div>
+      <div class="tl-item">
+        <div class="yr">DATE TBC</div>
+        <div class="ev">Hong Kong Open Age Group</div>
+        <div class="dt">2 Silver, 1 Bronze</div>
+        <div class="names">Tri Eka Sandiri, Rara Naura, Gabriella — Silver · Sabihisma Arsyi, Naima Syeeda — Bronze</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COACHES -->
+  <section class="block" id="coaches">
+    <div class="eyebrow">The team</div>
+    <h2>your coaches</h2>
+    <div class="coach-grid">
+      <div class="coach">
+        <div class="photo"><div class="avatar">W</div></div>
+        <div class="c-body">
+          <div class="c-name">Widarman</div>
+          <div class="c-role">Swimming Coach</div>
+          <div class="c-quote">"Keep learning and always try to give the best."</div>
+        </div>
+      </div>
+      <div class="coach">
+        <div class="photo"><div class="avatar">SA</div></div>
+        <div class="c-body">
+          <div class="c-name">Sabihisma Arsyi</div>
+          <div class="c-role">Synchronized Swimming Coach</div>
+          <div class="c-quote">"It's about giving the best to what we're passionate about."</div>
+        </div>
+      </div>
+      <div class="coach">
+        <div class="photo"><div class="avatar">HR</div></div>
+        <div class="c-body">
+          <div class="c-name">Harli Ramayani</div>
+          <div class="c-role">Diving Coach</div>
+          <div class="c-quote">"Winning is really about the detail."</div>
+        </div>
+      </div>
+      <div class="coach">
+        <div class="photo"><div class="avatar">LN</div></div>
+        <div class="c-body">
+          <div class="c-name">Lukman Niode</div>
+          <div class="c-role">Coach / Consultant</div>
+          <div class="c-quote">Former Olympian · Asian Games medalist · SEA Games champion &amp; record holder</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="block contact" id="contact">
+    <div class="eyebrow">Get in touch</div>
+    <div class="contact-grid">
+      <div>
+        <h2>join us</h2>
+        <div class="contact-info">
+          <div><div class="k">Location</div><div class="v">Kolam Renang Senayan, GBK, Jakarta</div></div>
+          <div><div class="k">Email</div><div class="v">info@tirtataruna66.id</div><div class="flag">Placeholder — replace with the club's real address</div></div>
+          <div><div class="k">Phone / WhatsApp</div><div class="v">+62 8xx xxxx xxxx</div><div class="flag">Placeholder — replace with the club's real number</div></div>
+        </div>
+        <a href="#" class="wa-btn">Chat on WhatsApp</a>
+      </div>
+      <div class="map"><div class="pin"></div></div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="fbrand">tirta taruna 66</div>
+    <div class="fnote">Senayan · Jakarta · Est. 1966</div>
+  </footer>
+</div>
+</body>
+</html>
