@@ -58,4 +58,14 @@ const results = defineCollection({
 	}),
 });
 
-export const collections = { programs, coaches, stats, medals, results };
+const gallery = defineCollection({
+	loader: file('src/data/gallery.json'),
+	schema: z.object({
+		id: z.string(),
+		order: z.number(),
+		caption: z.string(),
+		tone: z.enum(['a', 'b', 'c', 'd']),
+	}),
+});
+
+export const collections = { programs, coaches, stats, medals, results, gallery };

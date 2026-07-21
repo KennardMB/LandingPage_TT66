@@ -1,0 +1,26 @@
+[
+	{
+		"id": "seaf-games",
+		"order": 1,
+		"caption": "SEAF Games, Singapore — our synchro and diving squads brought home three medals against international competition.",
+		"tone": "a"
+	},
+	{
+		"id": "master-competition",
+		"order": 2,
+		"caption": "Master Competition — TT66 swimmers combined for eight podium finishes across relay and individual events.",
+		"tone": "b"
+	},
+	{
+		"id": "weekly-training",
+		"order": 3,
+		"caption": "Weekly squad training at Kolam Renang Senayan, GBK — six decades of technique-first coaching in the water.",
+		"tone": "c"
+	},
+	{
+		"id": "hong-kong-open",
+		"order": 4,
+		"caption": "Hong Kong Open Age Group — three more medals abroad, proof our age-group swimmers compete at any distance.",
+		"tone": "d"
+	}
+]
