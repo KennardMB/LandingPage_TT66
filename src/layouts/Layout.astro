@@ -15,8 +15,6 @@ const { title = 'Tirta Taruna 66 · Aquatic Swimming Club' } = Astro.props;
 </head>
 <body>
 	<div class="wrap">
-		<div class="guides"><span></span><span></span></div>
-
 		<nav>
 			<a href="/" class="brand">
 				<img src="/logo/tt66-logo.png" alt="Tirta Taruna 66 logo" class="logo-mark" />
@@ -73,26 +71,6 @@ const { title = 'Tirta Taruna 66 · Aquatic Swimming Club' } = Astro.props;
 		max-width: 1440px;
 		margin: 0 auto;
 		position: relative;
-	}
-
-	.guides {
-		position: absolute;
-		inset: 0;
-		pointer-events: none;
-		z-index: 2;
-	}
-	.guides span {
-		position: absolute;
-		top: 0;
-		bottom: 0;
-		width: 1px;
-		background: rgba(255, 255, 255, 0.16);
-	}
-	.guides span:nth-child(1) {
-		left: 20%;
-	}
-	.guides span:nth-child(2) {
-		left: 80%;
 	}
 
 	/* ---------- NAV ---------- */
