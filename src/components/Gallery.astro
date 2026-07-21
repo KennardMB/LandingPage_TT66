@@ -163,12 +163,13 @@ const slides = (await getCollection('gallery')).sort((a, b) => a.data.order - b.
 	}
 
 	@media (max-width: 900px) {
+		.gallery {
+			padding: 40px 20px 96px;
+		}
 		.carousel {
 			aspect-ratio: 3 / 4;
 		}
 		.carousel-arrow {
-			top: 76px;
-			transform: none;
 			width: 38px;
 			height: 38px;
 			font-size: 20px;
