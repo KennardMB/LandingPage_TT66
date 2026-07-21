@@ -15,9 +15,7 @@ const slides = (await getCollection('gallery')).sort((a, b) => a.data.order - b.
 			{
 				slides.map((slide) => (
 					<div class="carousel-slide">
-						<div class={`slide-image tone-${slide.data.tone}`}>
-							<span class="slide-tag">Photo placeholder</span>
-						</div>
+						<div class={`slide-image tone-${slide.data.tone}`}></div>
 						<div class="slide-scrim">
 							<p class="slide-caption">{slide.data.caption}</p>
 						</div>
@@ -88,19 +86,6 @@ const slides = (await getCollection('gallery')).sort((a, b) => a.data.order - b.
 	}
 	.tone-d {
 		background: linear-gradient(220deg, var(--blue) 0%, var(--ink) 100%);
-	}
-	.slide-tag {
-		position: absolute;
-		top: 20px;
-		left: 20px;
-		font-size: 11px;
-		font-weight: 700;
-		letter-spacing: 0.1em;
-		text-transform: uppercase;
-		color: var(--paper);
-		background: rgba(0, 0, 0, 0.3);
-		padding: 7px 14px;
-		border-radius: 20px;
 	}
 	.slide-scrim {
 		position: absolute;

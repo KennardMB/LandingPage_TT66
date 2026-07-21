@@ -12,10 +12,6 @@ const programs = (await getCollection('programs')).sort((a, b) => a.data.order -
 <section class="block" id="programs">
 	<div class="eyebrow">Weekly programs</div>
 	<h2>train with us</h2>
-	<div class="note">
-		Class times shown as "Schedule TBC" — to be confirmed with the club
-		during onboarding and filled in before launch.
-	</div>
 	<div class="filters">
 		<span class="chip on">All programs</span>
 		{programs.map((program) => <span class="chip">{program.data.name}</span>)}
