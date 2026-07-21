@@ -10,6 +10,7 @@ const { title = 'Tirta Taruna 66 · Aquatic Swimming Club' } = Astro.props;
 <head>
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="icon" type="image/png" href="/favicon.png" />
 	<title>{title}</title>
 </head>
 <body>
@@ -17,7 +18,10 @@ const { title = 'Tirta Taruna 66 · Aquatic Swimming Club' } = Astro.props;
 		<div class="guides"><span></span><span></span></div>
 
 		<nav>
-			<div class="brand">Tirta Taruna 66</div>
+			<div class="brand">
+				<img src="/logo/tt66-logo.png" alt="Tirta Taruna 66 logo" class="logo-mark" />
+				Tirta Taruna 66
+			</div>
 			<div class="navlinks">
 				<a href="#about">About</a>
 				<a href="#programs">Programs</a>
@@ -97,10 +101,21 @@ const { title = 'Tirta Taruna 66 · Aquatic Swimming Club' } = Astro.props;
 		padding: 34px 56px;
 	}
 	.brand {
+		display: flex;
+		align-items: center;
+		gap: 12px;
 		font-weight: 700;
 		letter-spacing: 0.14em;
 		font-size: 15px;
 		text-transform: uppercase;
+	}
+	.logo-mark {
+		width: 32px;
+		height: 32px;
+		border-radius: 8px;
+		object-fit: contain;
+		background: var(--paper);
+		padding: 3px;
 	}
 	.navlinks {
 		display: flex;
