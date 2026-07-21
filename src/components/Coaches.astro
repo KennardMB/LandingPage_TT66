@@ -67,6 +67,7 @@ const coaches = (await getCollection('coaches')).sort((a, b) => a.data.order - b
 		font-size: 22px;
 		font-weight: 700;
 		letter-spacing: -0.01em;
+		overflow-wrap: break-word;
 	}
 	.coach .c-role {
 		font-size: 13px;
@@ -87,6 +88,12 @@ const coaches = (await getCollection('coaches')).sort((a, b) => a.data.order - b
 	@media (max-width: 900px) {
 		.coach-grid {
 			grid-template-columns: repeat(2, 1fr);
+		}
+		.coach .c-quote {
+			display: none;
+		}
+		.coach .c-name {
+			font-size: 19px;
 		}
 	}
 </style>
