@@ -20,13 +20,16 @@ const { title = 'Tirta Taruna 66 · Aquatic Swimming Club' } = Astro.props;
 				<img src="/logo/tt66-logo.png" alt="Tirta Taruna 66 logo" class="logo-mark" />
 				Tirta Taruna 66
 			</a>
-			<div class="navlinks">
+			<div class="navlinks" data-navlinks>
 				<a href="/#about">About</a>
 				<a href="/#programs">Programs</a>
 				<a href="/#achievements">Achievements</a>
 				<a href="/#coaches">Coaches &amp; Staff</a>
 				<a href="/#contact">Contact</a>
 			</div>
+			<button class="nav-toggle" data-nav-toggle aria-label="Toggle menu" aria-expanded="false">
+				<span></span><span></span><span></span>
+			</button>
 		</nav>
 
 		<slot />
@@ -39,6 +42,23 @@ const { title = 'Tirta Taruna 66 · Aquatic Swimming Club' } = Astro.props;
 </body>
 </html>
 
+<script>
+	const toggle = document.querySelector<HTMLButtonElement>('[data-nav-toggle]');
+	const navlinks = document.querySelector<HTMLElement>('[data-navlinks]');
+
+	toggle?.addEventListener('click', () => {
+		const open = navlinks?.classList.toggle('open');
+		toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+	});
+
+	navlinks?.addEventListener('click', (e) => {
+		if ((e.target as HTMLElement).tagName === 'A') {
+			navlinks.classList.remove('open');
+			toggle?.setAttribute('aria-expanded', 'false');
+		}
+	});
+</script>
+
 <style is:global>
 	:root {
 		--blue: #5166dc;
@@ -47,6 +67,7 @@ const { title = 'Tirta Taruna 66 · Aquatic Swimming Club' } = Astro.props;
 		--paper: #ebeae8;
 		--muted: #9fa9e1;
 		--ink: #20264a;
+		--red: #e50112;
 	}
 	* {
 		margin: 0;
@@ -117,6 +138,42 @@ const { title = 'Tirta Taruna 66 · Aquatic Swimming Club' } = Astro.props;
 	.navlinks a:hover {
 		opacity: 1;
 	}
+	.nav-toggle {
+		display: none;
+		width: 32px;
+		height: 22px;
+		position: relative;
+		background: none;
+		border: none;
+		cursor: pointer;
+		padding: 0;
+	}
+	.nav-toggle span {
+		position: absolute;
+		left: 0;
+		width: 100%;
+		height: 2px;
+		background: var(--paper);
+		transition: transform 0.25s ease, opacity 0.25s ease;
+	}
+	.nav-toggle span:nth-child(1) {
+		top: 0;
+	}
+	.nav-toggle span:nth-child(2) {
+		top: 10px;
+	}
+	.nav-toggle span:nth-child(3) {
+		top: 20px;
+	}
+	.nav-toggle[aria-expanded='true'] span:nth-child(1) {
+		transform: translateY(10px) rotate(45deg);
+	}
+	.nav-toggle[aria-expanded='true'] span:nth-child(2) {
+		opacity: 0;
+	}
+	.nav-toggle[aria-expanded='true'] span:nth-child(3) {
+		transform: translateY(-10px) rotate(-45deg);
+	}
 
 	/* ---------- SECTION SHELL (shared across section components) ---------- */
 	section.block {
@@ -131,23 +188,13 @@ const { title = 'Tirta Taruna 66 · Aquatic Swimming Club' } = Astro.props;
 		font-weight: 700;
 		color: var(--muted);
 		margin-bottom: 20px;
-		display: flex;
-		align-items: center;
-		gap: 14px;
-	}
-	.eyebrow::before {
-		content: '';
-		width: 34px;
-		height: 2px;
-		background: var(--muted);
-		display: inline-block;
 	}
 	.block h2 {
 		font-weight: 700;
 		font-size: 84px;
 		line-height: 0.9;
 		letter-spacing: -0.03em;
-		text-transform: lowercase;
+		text-transform: capitalize;
 		margin-bottom: 34px;
 	}
 	.note {
@@ -222,6 +269,31 @@ const { title = 'Tirta Taruna 66 · Aquatic Swimming Club' } = Astro.props;
 	@media (max-width: 900px) {
 		.block h2 {
 			font-size: 52px;
+		}
+		.nav-toggle {
+			display: block;
+		}
+		.navlinks {
+			display: none;
+			position: absolute;
+			top: 100%;
+			left: 0;
+			right: 0;
+			flex-direction: column;
+			gap: 0;
+			background: var(--blue-deeper);
+			padding: 8px 56px 24px;
+			border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+		}
+		.navlinks.open {
+			display: flex;
+		}
+		.navlinks a {
+			padding: 14px 0;
+			border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+		}
+		.navlinks a:last-child {
+			border-bottom: none;
 		}
 	}
 </style>
