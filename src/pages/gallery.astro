@@ -1,0 +1,90 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../layouts/Layout.astro';
+
+const slides = (await getCollection('gallery')).sort((a, b) => a.data.order - b.data.order);
+---
+
+<Layout title="Gallery · Tirta Taruna 66">
+	<a href="/" class="back-home">← Back to home</a>
+	<section class="block">
+		<div class="eyebrow">Club life</div>
+		<h2>gallery</h2>
+		<div class="note">
+			All photos below are placeholders. Real competition, training, and
+			event photography will replace these before launch.
+		</div>
+		<div class="photo-grid">
+			{
+				slides.map((slide) => (
+					<div class="photo-card">
+						<div class={`photo-image tone-${slide.data.tone}`}>
+							<span class="photo-tag">Photo placeholder</span>
+						</div>
+						<p class="photo-caption">{slide.data.caption}</p>
+					</div>
+				))
+			}
+		</div>
+	</section>
+</Layout>
+
+<style>
+	.photo-grid {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 24px;
+	}
+	.photo-card {
+		background: var(--blue-deep);
+		border-radius: 14px;
+		overflow: hidden;
+	}
+	.photo-image {
+		height: 320px;
+		position: relative;
+	}
+	.photo-image::after {
+		content: '';
+		position: absolute;
+		inset: 0;
+		background: radial-gradient(circle at 30% 24%, rgba(255, 255, 255, 0.16), transparent 55%);
+	}
+	.tone-a {
+		background: linear-gradient(160deg, var(--blue) 0%, var(--blue-deeper) 100%);
+	}
+	.tone-b {
+		background: linear-gradient(200deg, var(--blue-deep) 0%, var(--ink) 100%);
+	}
+	.tone-c {
+		background: linear-gradient(140deg, var(--muted) 0%, var(--blue-deep) 100%);
+	}
+	.tone-d {
+		background: linear-gradient(220deg, var(--blue) 0%, var(--ink) 100%);
+	}
+	.photo-tag {
+		position: absolute;
+		top: 20px;
+		left: 20px;
+		font-size: 11px;
+		font-weight: 700;
+		letter-spacing: 0.1em;
+		text-transform: uppercase;
+		color: var(--paper);
+		background: rgba(0, 0, 0, 0.3);
+		padding: 7px 14px;
+		border-radius: 20px;
+	}
+	.photo-caption {
+		padding: 22px 24px 26px;
+		font-size: 17px;
+		line-height: 1.5;
+		font-weight: 600;
+	}
+
+	@media (max-width: 900px) {
+		.photo-grid {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>

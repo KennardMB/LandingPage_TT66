@@ -1,6 +1,11 @@
 ---
 import { getCollection } from 'astro:content';
 
+interface Props {
+	showSeeMore?: boolean;
+}
+const { showSeeMore = true } = Astro.props;
+
 const stats = (await getCollection('stats')).sort((a, b) => a.data.order - b.data.order);
 ---
 
@@ -19,6 +24,13 @@ const stats = (await getCollection('stats')).sort((a, b) => a.data.order - b.dat
 				parents, for swimmers' achievement. That structure is a big part of
 				why TT66 has stayed strong for so long.
 			</p>
+			{
+				showSeeMore && (
+					<a href="/about" class="see-more">
+						See more <span aria-hidden="true">→</span>
+					</a>
+				)
+			}
 		</div>
 		<div class="stats">
 			{

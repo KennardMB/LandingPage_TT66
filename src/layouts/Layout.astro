@@ -18,16 +18,16 @@ const { title = 'Tirta Taruna 66 · Aquatic Swimming Club' } = Astro.props;
 		<div class="guides"><span></span><span></span></div>
 
 		<nav>
-			<div class="brand">
+			<a href="/" class="brand">
 				<img src="/logo/tt66-logo.png" alt="Tirta Taruna 66 logo" class="logo-mark" />
 				Tirta Taruna 66
-			</div>
+			</a>
 			<div class="navlinks">
-				<a href="#about">About</a>
-				<a href="#programs">Programs</a>
-				<a href="#achievements">Achievements</a>
-				<a href="#coaches">Coaches &amp; Staff</a>
-				<a href="#contact">Contact</a>
+				<a href="/#about">About</a>
+				<a href="/#programs">Programs</a>
+				<a href="/#achievements">Achievements</a>
+				<a href="/#coaches">Coaches &amp; Staff</a>
+				<a href="/#contact">Contact</a>
 			</div>
 			<div class="menu-btn">Menu</div>
 		</nav>
@@ -108,6 +108,8 @@ const { title = 'Tirta Taruna 66 · Aquatic Swimming Club' } = Astro.props;
 		letter-spacing: 0.14em;
 		font-size: 15px;
 		text-transform: uppercase;
+		color: var(--paper);
+		text-decoration: none;
 	}
 	.logo-mark {
 		width: 32px;
@@ -179,6 +181,40 @@ const { title = 'Tirta Taruna 66 · Aquatic Swimming Club' } = Astro.props;
 		margin-top: -16px;
 		margin-bottom: 40px;
 		max-width: 640px;
+	}
+	.see-more {
+		display: inline-flex;
+		align-items: center;
+		gap: 10px;
+		margin-top: 44px;
+		padding: 15px 30px;
+		border: 1.5px solid rgba(255, 255, 255, 0.35);
+		border-radius: 40px;
+		color: var(--paper);
+		text-decoration: none;
+		font-size: 13px;
+		font-weight: 700;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+	}
+	.see-more:hover {
+		border-color: var(--paper);
+	}
+	.back-home {
+		display: inline-flex;
+		align-items: center;
+		gap: 8px;
+		color: var(--muted);
+		text-decoration: none;
+		font-size: 13px;
+		font-weight: 700;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		padding: 0 56px;
+		margin-top: 8px;
+	}
+	.back-home:hover {
+		color: var(--paper);
 	}
 
 	/* ---------- FOOTER ---------- */

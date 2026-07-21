@@ -1,6 +1,11 @@
 ---
 import { getCollection } from 'astro:content';
 
+interface Props {
+	showSeeMore?: boolean;
+}
+const { showSeeMore = true } = Astro.props;
+
 const slides = (await getCollection('gallery')).sort((a, b) => a.data.order - b.data.order);
 ---
 
@@ -28,6 +33,15 @@ const slides = (await getCollection('gallery')).sort((a, b) => a.data.order - b.
 	<div class="carousel-dots" data-dots>
 		{slides.map((_, i) => <span class="dot" data-dot={i}></span>)}
 	</div>
+	{
+		showSeeMore && (
+			<div class="gallery-see-more">
+				<a href="/gallery" class="see-more">
+					See more <span aria-hidden="true">→</span>
+				</a>
+			</div>
+		)
+	}
 </section>
 
 <style>
@@ -167,6 +181,13 @@ const slides = (await getCollection('gallery')).sort((a, b) => a.data.order - b.
 			font-size: 15px;
 			max-width: 100%;
 		}
+	}
+</style>
+
+<style>
+	.gallery-see-more {
+		display: flex;
+		justify-content: center;
 	}
 </style>
 

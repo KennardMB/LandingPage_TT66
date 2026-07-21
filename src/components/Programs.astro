@@ -1,6 +1,11 @@
 ---
 import { getCollection } from 'astro:content';
 
+interface Props {
+	showSeeMore?: boolean;
+}
+const { showSeeMore = true } = Astro.props;
+
 const programs = (await getCollection('programs')).sort((a, b) => a.data.order - b.data.order);
 ---
 
@@ -30,6 +35,13 @@ const programs = (await getCollection('programs')).sort((a, b) => a.data.order -
 			))
 		}
 	</div>
+	{
+		showSeeMore && (
+			<a href="/programs" class="see-more">
+				See more <span aria-hidden="true">→</span>
+			</a>
+		)
+	}
 </section>
 
 <style>

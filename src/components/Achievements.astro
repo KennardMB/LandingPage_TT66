@@ -1,6 +1,11 @@
 ---
 import { getCollection } from 'astro:content';
 
+interface Props {
+	showSeeMore?: boolean;
+}
+const { showSeeMore = true } = Astro.props;
+
 const medals = (await getCollection('medals')).sort((a, b) => a.data.order - b.data.order);
 const results = (await getCollection('results')).sort((a, b) => a.data.order - b.data.order);
 ---
@@ -30,6 +35,13 @@ const results = (await getCollection('results')).sort((a, b) => a.data.order - b
 			))
 		}
 	</div>
+	{
+		showSeeMore && (
+			<a href="/achievements" class="see-more">
+				See more <span aria-hidden="true">→</span>
+			</a>
+		)
+	}
 </section>
 
 <style>
